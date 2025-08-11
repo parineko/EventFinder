@@ -5,17 +5,14 @@ import path from 'path'
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
+  base: '/EventFinder/', // GitHub Pages用のベースパス
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
     },
   },
-  server: {
-    port: 3000,
-    open: true,
-  },
   build: {
     outDir: 'dist',
-    sourcemap: true,
+    assetsDir: 'assets',
   },
 })
