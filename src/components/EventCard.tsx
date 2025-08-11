@@ -13,37 +13,15 @@ interface EventCardProps {
 export const EventCard: React.FC<EventCardProps> = ({ event, distanceText }) => {
   const categoryInfo = getCategoryInfo(event.category);
 
-  // Enhanced debug logging
-  console.log('=== EventCard Debug ===');
-  console.log('Event:', event.name);
-  console.log('Category:', event.category);
-  console.log('BASE_URL:', import.meta.env.BASE_URL);
-  console.log('Generated image path:', getCategoryImage(event.category));
-  console.log('Current location:', window.location.href);
-  console.log('========================');
-
   return (
     <div className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg border border-white/20 overflow-hidden hover:shadow-xl hover:scale-105 transition-all duration-300">
-      {/* Enhanced debug info */}
-      <div style={{fontSize: '12px', color: 'red', padding: '4px', backgroundColor: 'yellow'}}>
-        <div>Debug: {getCategoryImage(event.category)}</div>
-        <div>BASE_URL: {import.meta.env.BASE_URL}</div>
-        <div>Category: {event.category}</div>
-      </div>
-      
       <img
         src={getCategoryImage(event.category)}
         alt={event.name}
         className="w-full h-48 object-cover"
         loading="lazy"
         onError={(e) => {
-          // Enhanced error handling with detailed logging
-          console.error('Image load failed:', e.currentTarget.src);
-          console.log('Trying fallback image...');
-          
-          // Use fallback image with proper path
           const fallbackPath = '/EventFinder/images/categories/culture.jpg';
-          console.log('Setting fallback image:', fallbackPath);
           e.currentTarget.src = fallbackPath;
         }}
       />

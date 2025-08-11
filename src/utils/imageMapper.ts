@@ -9,8 +9,5 @@ export const getCategoryImage = (category: string): string => {
     family: `${basePath}images/categories/family.jpg`
   };
 
-  // デバッグ用（後で削除予定）
-  console.log(`Loading image for category: ${category} -> ${categoryImages[category] || categoryImages.culture}`);
-  
   return categoryImages[category] || categoryImages.culture;
 };
