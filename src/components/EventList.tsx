@@ -29,7 +29,8 @@ export const EventList: React.FC<EventListProps> = ({ events, distanceTexts }) =
                 onError={(e) => {
                   // Use BASE_URL for fallback image
                   const basePath = import.meta.env.BASE_URL;
-                  e.currentTarget.src = `${basePath}images/categories/culture.jpg`;
+                  const fallbackPath = basePath.endsWith('/') ? basePath + 'images/categories/culture.jpg' : basePath + '/images/categories/culture.jpg';
+                  e.currentTarget.src = fallbackPath;
                 }}
               />
               
