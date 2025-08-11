@@ -35,19 +35,70 @@ jobs:
         
       - name: Copy images manually (fallback)
         run: |
-          echo "Checking if images directory exists in dist..."
-          ls -la dist/
-          if [ ! -d "dist/images" ]; then
-            echo "Creating dist/images directory..."
-            mkdir -p dist/images/categories
-            echo "Copying images from public to dist..."
-            cp -r public/images/* dist/images/
-            echo "Images copied successfully:"
-            ls -la dist/images/categories/
+          echo "Checking current directory structure..."
+          pwd
+          ls -la
+          
+          echo "Checking if public directory exists..."
+          if [ -d "public" ]; then
+            echo "✅ Public directory found"
+            ls -la public/
+            
+            if [ -d "public/images" ]; then
+              echo "✅ Images directory found"
+              ls -la public/images/
+              
+              if [ -d "public/images/categories" ]; then
+                echo "✅ Categories directory found"
+                ls -la public/images/categories/
+                
+                echo "Creating dist/images directory..."
+                mkdir -p dist/images/categories
+                
+                echo "Copying images from public to dist..."
+                cp -r public/images/* dist/images/
+                
+                echo "Images copied successfully:"
+                ls -la dist/images/categories/
+              else
+                echo "❌ Categories directory not found in public/images/"
+                echo "Creating empty categories directory..."
+                mkdir -p dist/images/categories
+              fi
+            else
+              echo "❌ Images directory not found in public/"
+              echo "Creating empty images directory..."
+              mkdir -p dist/images/categories
+            fi
           else
-            echo "Images directory already exists:"
-            ls -la dist/images/categories/
+            echo "❌ Public directory not found"
+            echo "Creating empty images directory..."
+            mkdir -p dist/images/categories
           fi
+          
+          echo "Final dist structure:"
+          ls -la dist/
+          if [ -d "dist/images" ]; then
+            ls -la dist/images/
+            if [ -d "dist/images/categories" ]; then
+              ls -la dist/images/categories/
+            fi
+          fi
+          
+      - name: Download sample images (if needed)
+        run: |
+          echo "Downloading sample images as fallback..."
+          mkdir -p dist/images/categories
+          
+          # サンプル画像をダウンロード（プレースホルダー）
+          curl -o dist/images/categories/culture.jpg https://via.placeholder.com/400x300/4F46E5/FFFFFF?text=Culture
+          curl -o dist/images/categories/music.jpg https://via.placeholder.com/400x300/7C3AED/FFFFFF?text=Music
+          curl -o dist/images/categories/gourmet.jpg https://via.placeholder.com/400x300/EA580C/FFFFFF?text=Gourmet
+          curl -o dist/images/categories/sports.jpg https://via.placeholder.com/400x300/16A34A/FFFFFF?text=Sports
+          curl -o dist/images/categories/family.jpg https://via.placeholder.com/400x300/CA8A04/FFFFFF?text=Family
+          
+          echo "Sample images downloaded:"
+          ls -la dist/images/categories/
         
       - name: Setup Pages
         uses: actions/configure-pages@v4
