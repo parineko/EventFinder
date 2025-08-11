@@ -21,7 +21,7 @@ export const EventCard: React.FC<EventCardProps> = ({ event, distanceText }) => 
         className="w-full h-48 object-cover"
         loading="lazy"
         onError={(e) => {
-          const basePath = import.meta.env.BASE_URL || '/';
+          const basePath = window.location.pathname.includes('/EventFinder/') ? '/EventFinder/' : '/';
           e.currentTarget.src = `${basePath}images/categories/culture.jpg`;
         }}
       />

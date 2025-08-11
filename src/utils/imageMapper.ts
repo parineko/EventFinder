@@ -1,6 +1,7 @@
 export const getCategoryImage = (category: string): string => {
   // GitHub Pages環境とローカル環境の両方で動作するパス
-  const basePath = import.meta.env.BASE_URL || '/';
+  // 現在のURLからベースパスを動的に取得
+  const basePath = window.location.pathname.includes('/EventFinder/') ? '/EventFinder/' : '/';
   
   const categoryImages = {
     music: `${basePath}images/categories/music.jpg`,
