@@ -27,7 +27,7 @@ export const EventList: React.FC<EventListProps> = ({ events, distanceTexts }) =
                 className="w-20 h-16 object-cover rounded-xl"
                 loading="lazy"
                 onError={(e) => {
-                  const basePath = window.location.pathname.includes('/EventFinder/') ? '/EventFinder/' : '/';
+                  const basePath = import.meta.env.BASE_URL;
                   e.currentTarget.src = `${basePath}images/categories/culture.jpg`;
                 }}
               />
