@@ -21,7 +21,7 @@ export const EventCard: React.FC<EventCardProps> = ({ event, distanceText }) => 
         className="w-full h-48 object-cover"
         loading="lazy"
         onError={(e) => {
-          e.currentTarget.src = 'images/categories/culture.jpg';
+          e.currentTarget.src = '/EventFinder/images/categories/culture.jpg';
         }}
       />
       <div className="p-6">
