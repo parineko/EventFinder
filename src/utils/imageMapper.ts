@@ -1,5 +1,5 @@
 export const getCategoryImage = (category: string): string => {
-  // import.meta.env.BASE_URLを使用（Vite標準）
+  // Use import.meta.env.BASE_URL for Vite
   const basePath = import.meta.env.BASE_URL;
   
   const categoryImages = {

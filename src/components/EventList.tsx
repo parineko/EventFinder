@@ -20,19 +20,20 @@ export const EventList: React.FC<EventListProps> = ({ events, distanceTexts }) =
         return (
           <div key={event.id} className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg border border-white/20 p-6 hover:shadow-xl transition-all duration-300">
             <div className="flex gap-6">
-              {/* 画像 */}
+              {/* Image */}
               <img
                 src={getCategoryImage(event.category)}
                 alt={event.name}
                 className="w-20 h-16 object-cover rounded-xl"
                 loading="lazy"
                 onError={(e) => {
+                  // Use BASE_URL for fallback image
                   const basePath = import.meta.env.BASE_URL;
                   e.currentTarget.src = `${basePath}images/categories/culture.jpg`;
                 }}
               />
               
-              {/* イベント情報 */}
+              {/* Event information */}
               <div className="flex-1">
                 <div className="flex justify-between items-start mb-3">
                   <h3 className="font-bold text-lg text-gray-900">

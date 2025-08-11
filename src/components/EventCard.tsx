@@ -13,13 +13,13 @@ interface EventCardProps {
 export const EventCard: React.FC<EventCardProps> = ({ event, distanceText }) => {
   const categoryInfo = getCategoryInfo(event.category);
 
-  // デバッグ用（一時的）
+  // Debug logging (temporary)
   console.log('BASE_URL:', import.meta.env.BASE_URL);
   console.log('Generated image path:', getCategoryImage(event.category));
 
   return (
     <div className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg border border-white/20 overflow-hidden hover:shadow-xl hover:scale-105 transition-all duration-300">
-      {/* デバッグ用（一時的） */}
+      {/* Debug info (temporary) */}
       <div style={{fontSize: '12px', color: 'red', padding: '4px'}}>
         Debug: {getCategoryImage(event.category)}
       </div>
@@ -30,6 +30,7 @@ export const EventCard: React.FC<EventCardProps> = ({ event, distanceText }) => 
         className="w-full h-48 object-cover"
         loading="lazy"
         onError={(e) => {
+          // Use BASE_URL for fallback image
           const basePath = import.meta.env.BASE_URL;
           e.currentTarget.src = `${basePath}images/categories/culture.jpg`;
         }}
