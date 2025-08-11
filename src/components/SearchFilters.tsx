@@ -1,7 +1,7 @@
 import React from 'react';
-import { Search, Navigation, MapPin } from 'lucide-react';
-import { SearchFilters as SearchFiltersType, Category } from '@/types';
-import { prefectures, regions } from '@/data/prefectures';
+import { Search, Navigation } from 'lucide-react';
+import { SearchFilters as SearchFiltersType } from '@/types';
+import { prefectures } from '@/data/prefectures';
 import { categories } from '@/data/categories';
 
 interface SearchFiltersProps {

@@ -45,13 +45,13 @@ const App: React.FC = () => {
     // ソート処理
     filtered.sort((a, b) => {
       if (sortBy === 'date') {
-        return new Date(a.startDate) - new Date(b.startDate);
+        return new Date(a.startDate).getTime() - new Date(b.startDate).getTime();
       }
       if (sortBy === 'dayOfWeek') {
-        const dayA = getDayOfWeek(a.startDate);
-        const dayB = getDayOfWeek(b.startDate);
+        const dayA: number = getDayOfWeek(a.startDate);
+        const dayB: number = getDayOfWeek(b.startDate);
         if (dayA !== dayB) return dayA - dayB;
-        return new Date(a.startDate) - new Date(b.startDate);
+        return new Date(a.startDate).getTime() - new Date(b.startDate).getTime();
       }
       if (sortBy === 'distance' && filters.selectedPrefecture) {
         const baseLoc = prefectureCoordinates[filters.selectedPrefecture];
