@@ -14,11 +14,12 @@ export default defineConfig({
   build: {
     outDir: 'dist',
     assetsDir: 'assets',
-    rollupOptions: {
-      input: {
-        main: path.resolve(__dirname, 'index.html'),
-      },
-    },
+    // rollupOptionsを削除して画像ファイルのコピーを確実にする
+    // rollupOptions: {
+    //   input: {
+    //     main: path.resolve(__dirname, 'index.html'),
+    //   },
+    // },
   },
   publicDir: 'public', // publicフォルダを明示的に指定
 })
