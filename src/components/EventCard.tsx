@@ -37,10 +37,13 @@ export const EventCard: React.FC<EventCardProps> = ({ event, distanceText }) => 
         className="w-full h-48 object-cover"
         loading="lazy"
         onError={(e) => {
-          // Use BASE_URL for fallback image
-          const basePath = import.meta.env.BASE_URL;
-          const fallbackPath = basePath.endsWith('/') ? basePath + 'images/categories/culture.jpg' : basePath + '/images/categories/culture.jpg';
-          console.log('Image load error, using fallback:', fallbackPath);
+          // Enhanced error handling with detailed logging
+          console.error('Image load failed:', e.currentTarget.src);
+          console.log('Trying fallback image...');
+          
+          // Use fallback image with proper path
+          const fallbackPath = '/EventFinder/images/categories/culture.jpg';
+          console.log('Setting fallback image:', fallbackPath);
           e.currentTarget.src = fallbackPath;
         }}
       />

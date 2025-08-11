@@ -27,9 +27,13 @@ export const EventList: React.FC<EventListProps> = ({ events, distanceTexts }) =
                 className="w-20 h-16 object-cover rounded-xl"
                 loading="lazy"
                 onError={(e) => {
-                  // Use BASE_URL for fallback image
-                  const basePath = import.meta.env.BASE_URL;
-                  const fallbackPath = basePath.endsWith('/') ? basePath + 'images/categories/culture.jpg' : basePath + '/images/categories/culture.jpg';
+                  // Enhanced error handling with detailed logging
+                  console.error('Image load failed:', e.currentTarget.src);
+                  console.log('Trying fallback image...');
+                  
+                  // Use fallback image with proper path
+                  const fallbackPath = '/EventFinder/images/categories/culture.jpg';
+                  console.log('Setting fallback image:', fallbackPath);
                   e.currentTarget.src = fallbackPath;
                 }}
               />
