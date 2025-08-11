@@ -27,7 +27,7 @@ export const EventList: React.FC<EventListProps> = ({ events, distanceTexts }) =
                 className="w-20 h-16 object-cover rounded-xl"
                 loading="lazy"
                 onError={(e) => {
-                  e.currentTarget.src = '/images/categories/culture.jpg';
+                  e.currentTarget.src = 'images/categories/culture.jpg';
                 }}
               />
               
