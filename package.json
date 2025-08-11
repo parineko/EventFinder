@@ -33,6 +33,7 @@
     "vite": "^7.1.1"
   },
   "devDependencies": {
-    "@types/node": "^24.2.1"
+    "@types/node": "^24.2.1",
+    "vite-plugin-copy": "^0.1.6"
   }
 }

@@ -1,11 +1,19 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import path from 'path'
+import { copy } from 'vite-plugin-copy'
 
-// https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react()],
-  base: '/EventFinder/', // GitHub Pages用のベースパス
+  plugins: [
+    react(),
+    copy([
+      {
+        src: 'public/images/**/*',
+        dest: 'dist/images'
+      }
+    ])
+  ],
+  base: '/EventFinder/',
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
@@ -14,12 +22,6 @@ export default defineConfig({
   build: {
     outDir: 'dist',
     assetsDir: 'assets',
-    // rollupOptionsを削除して画像ファイルのコピーを確実にする
-    // rollupOptions: {
-    //   input: {
-    //     main: path.resolve(__dirname, 'index.html'),
-    //   },
-    // },
   },
-  publicDir: 'public', // publicフォルダを明示的に指定
+  publicDir: 'public',
 })
