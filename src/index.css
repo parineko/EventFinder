@@ -1,0 +1,147 @@
+@import "tailwindcss";
+
+/* カスタムスタイル */
+@layer base {
+  html {
+    font-family: 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Meiryo', sans-serif;
+  }
+  
+  body {
+    @apply antialiased bg-gradient-to-br from-sky-50 to-blue-50 min-h-screen;
+  }
+}
+
+@layer components {
+  .glass-morphism {
+    @apply bg-white/80 backdrop-blur-sm border border-white/20 rounded-xl shadow-lg;
+  }
+  
+  .gradient-text {
+    @apply bg-gradient-to-r from-blue-600 to-sky-600 bg-clip-text text-transparent;
+  }
+  
+  .card-hover {
+    @apply transition-all duration-300 hover:shadow-xl hover:-translate-y-1;
+  }
+  
+  .btn-primary {
+    @apply bg-gradient-to-r from-blue-500 to-sky-500 hover:from-blue-600 hover:to-sky-600 text-white font-medium px-6 py-3 rounded-lg transition-all duration-200 hover:shadow-lg hover:scale-105;
+  }
+  
+  .btn-secondary {
+    @apply bg-white/80 hover:bg-white text-gray-700 font-medium px-4 py-2 rounded-lg border border-gray-200 transition-all duration-200 hover:shadow-md;
+  }
+}
+
+@layer utilities {
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .text-shadow {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+}
+
+/* ページ読み込み時のアニメーション */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInFromLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-fadeInUp {
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.animate-slideInFromLeft {
+  animation: slideInFromLeft 0.6s ease-out forwards;
+}
+
+.delay-200 {
+  animation-delay: 0.2s;
+}
+
+/* ホバー時の光沢効果 */
+.shine-effect {
+  position: relative;
+  overflow: hidden;
+}
+
+.shine-effect::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+  transition: left 0.6s;
+}
+
+.shine-effect:hover::before {
+  left: 100%;
+}
+
+/* タイトルのホバーエフェクト強化 */
+.header-title {
+  transition: all 0.3s ease;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.header-title:hover {
+  text-shadow: 0 4px 8px rgba(0,0,0,0.4);
+  letter-spacing: 1px;
+}
+
+/* サブタイトルのホバーエフェクト */
+.header-subtitle {
+  transition: all 0.3s ease;
+}
+
+.header-subtitle:hover {
+  transform: translateY(-2px);
+  text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+/* スピナーアニメーション */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+/* 検索ヒントのアニメーション */
+.animate-fadeIn {
+  animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
