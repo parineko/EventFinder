@@ -84,21 +84,6 @@ jobs:
               ls -la dist/images/categories/
             fi
           fi
-          
-      - name: Download sample images (if needed)
-        run: |
-          echo "Downloading sample images as fallback..."
-          mkdir -p dist/images/categories
-          
-          # サンプル画像をダウンロード（プレースホルダー）
-          curl -o dist/images/categories/culture.jpg https://via.placeholder.com/400x300/4F46E5/FFFFFF?text=Culture
-          curl -o dist/images/categories/music.jpg https://via.placeholder.com/400x300/7C3AED/FFFFFF?text=Music
-          curl -o dist/images/categories/gourmet.jpg https://via.placeholder.com/400x300/EA580C/FFFFFF?text=Gourmet
-          curl -o dist/images/categories/sports.jpg https://via.placeholder.com/400x300/16A34A/FFFFFF?text=Sports
-          curl -o dist/images/categories/family.jpg https://via.placeholder.com/400x300/CA8A04/FFFFFF?text=Family
-          
-          echo "Sample images downloaded:"
-          ls -la dist/images/categories/
         
       - name: Setup Pages
         uses: actions/configure-pages@v4
@@ -109,11 +94,11 @@ jobs:
           path: './dist'
 
   deploy:
-    runs-on: ubuntu-latest
-    needs: build
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
